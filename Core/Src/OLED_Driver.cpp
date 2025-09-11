@@ -43,6 +43,16 @@ void OLED_Driver::clearDisplay()
 	memset(framebuffer, 0, sizeof(framebuffer));
 }
 
+void OLED_Driver::drawPixel(int16_t, int16_t y, uint16_t color)
+{
+	if (x < 0 | x >= this->width() | y < 0 | y >= this->height()) return;
+
+	if (color)
+		framebuffer |= (1 << (y % 8));
+	else
+		framebuffer |= ~(1 << (y % 8));
+}
+
 void OLED_Driver::sendCommand(uint8_t cmd)
 {
 	uint8_t buffer = {0x00, cmd};
