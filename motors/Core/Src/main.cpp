@@ -22,7 +22,6 @@ int main(void)
   I2C_Bus bus(&i2cHandle);
   bus.i2cInit();
   oled.begin();
-  oled.clearDisplay();
 
   Encoder_Init(&encoderHandle);
   Timer_Init(&timerHandle);

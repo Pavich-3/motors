@@ -1,5 +1,4 @@
 #include "OLED_Driver.hpp"
-#include <math.h>
 
 OLED_Driver::OLED_Driver(I2C_HandleTypeDef* i2cHandle) : GFX(OLED_WIDTH, OLED_HEIGHT), bus(i2cHandle)
 {
