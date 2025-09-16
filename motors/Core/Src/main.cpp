@@ -17,7 +17,6 @@ void HAL_DMA_CpltCallback(struct __DMA_HandleTypeDef * hdma)
         if (buffer > ENCODER_MAX)
             buffer = ENCODER_MAX;
 
-        uint32_t processed_value = buffer & (ENCODER_MAX + 1);
         uint16_t new_pulse = SERVO_MIN_PULSE + (((uint32_t)buffer * (uint32_t)(SERVO_MAX_PULSE - SERVO_MIN_PULSE)) / (uint32_t)ENCODER_MAX);
 
         __HAL_TIM_SET_COMPARE(&pwmHandle, TIM_CHANNEL_1, new_pulse);
