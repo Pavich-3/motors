@@ -18,6 +18,7 @@ public:
 	void begin(void);
 	void display(void);
 	void clearDisplay(void);
+	void drawServo(uint16_t angle_deg);
 	void drawPixel(int16_t x, int16_t y, uint16_t color) override;
 private:
 	void sendCommand(uint8_t cmd);

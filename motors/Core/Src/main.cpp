@@ -1,32 +1,29 @@
 #include <main.h>
 
 extern DMA_HandleTypeDef hdma_timer;
-volatile uint32_t buffer = 0;
+volatile uint32_t buffer = -1;
+volatile uint32_t last_buffer = -1;
+
 
 TIM_HandleTypeDef encoderHandle = {0};
 TIM_HandleTypeDef timerHandle = {0};
 TIM_HandleTypeDef pwmHandle = {0};
-TIM_HandleTypeDef i2cHandle = {0};
+I2C_HandleTypeDef i2cHandle = {0};
+OLED_Driver oled(&i2cHandle);
 
 void SystemClock_Config(void);
-
-void HAL_DMA_CpltCallback(struct __DMA_HandleTypeDef * hdma)
-{
-    if (hdma->Instance == hdma_timer.Instance)
-    {
-        if (buffer > ENCODER_MAX)
-            buffer = ENCODER_MAX;
-
-        uint16_t new_pulse = SERVO_MIN_PULSE + (((uint32_t)buffer * (uint32_t)(SERVO_MAX_PULSE - SERVO_MIN_PULSE)) / (uint32_t)ENCODER_MAX);
-
-        __HAL_TIM_SET_COMPARE(&pwmHandle, TIM_CHANNEL_1, new_pulse);
-    }
-}
+void HAL_DMA_CpltCallback(struct __DMA_HandleTypeDef * hdma);
 
 int main(void)
 {
   HAL_Init();
   SystemClock_Config();
+
+  I2C_Bus bus(&i2cHandle);
+  bus.i2cInit();
+  oled.begin();
+  oled.clearDisplay();
+
   Encoder_Init(&encoderHandle);
   Timer_Init(&timerHandle);
   PWM_Init(&pwmHandle);
@@ -42,7 +39,7 @@ int main(void)
   if (HAL_TIM_Base_Start(&timerHandle) != HAL_OK) Error_Handler();
 
   __HAL_TIM_SET_COMPARE(&pwmHandle, TIM_CHANNEL_1, (uint16_t)((SERVO_MIN_PULSE + SERVO_MAX_PULSE) / 2.0f));
-
+  oled.drawServo(90);
 
   while (1)
   {
@@ -78,6 +75,23 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+void HAL_DMA_CpltCallback(struct __DMA_HandleTypeDef * hdma)
+{
+    if (hdma->Instance == hdma_timer.Instance)
+    {
+        if (buffer > ENCODER_MAX)
+            buffer = ENCODER_MAX;
+        if (buffer == last_buffer)
+        	return;
+        last_buffer = buffer;
+
+        uint16_t new_pulse = SERVO_MIN_PULSE + (((uint32_t)buffer * (uint32_t)(SERVO_MAX_PULSE - SERVO_MIN_PULSE)) / (uint32_t)ENCODER_MAX);
+        __HAL_TIM_SET_COMPARE(&pwmHandle, TIM_CHANNEL_1, new_pulse);
+
+        oled.drawServo(buffer);
+    }
 }
 
 void Error_Handler(void)

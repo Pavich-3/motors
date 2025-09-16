@@ -1,4 +1,5 @@
 #include "OLED_Driver.hpp"
+#include <math.h>
 
 OLED_Driver::OLED_Driver(I2C_HandleTypeDef* i2cHandle) : GFX(OLED_WIDTH, OLED_HEIGHT), bus(i2cHandle)
 {
@@ -52,6 +53,27 @@ void OLED_Driver::drawPixel(int16_t x, int16_t y, uint16_t color)
 	else
 	   framebuffer[index] &= ~(1 << (y % 8));
 
+}
+
+void OLED_Driver::drawServo(uint16_t angle_deg)
+{
+	int16_t centerX = _width / 2;
+	int16_t centerY = _height / 2;
+
+	int16_t bodyWidth = 40;
+	int16_t bodyHeight = 24;
+	int16_t armLength = 28;
+
+	this->clearDisplay();
+	this->drawRect(centerX - bodyWidth / 2, centerY - bodyHeight / 2, bodyWidth, bodyHeight, 1);
+
+	float angle_rad = (angle_deg - 90.0f) * (M_PI / 180.0f);
+	int16_t endX = centerX + armLength * cos(angle_rad);
+	int16_t endY = centerY + armLength * sin(angle_rad);
+
+	this->drawLine(centerX, centerY, endX, endY, 1);
+
+	this->display();
 }
 
 void OLED_Driver::sendCommand(uint8_t cmd)
