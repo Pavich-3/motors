@@ -46,12 +46,15 @@ void GFX::drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t colo
 
 void GFX::drawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color)
 {
-
+    this->drawLine(x, y, x + w - 1, y, color);
+    this->drawLine(x, y + h - 1, x + w - 1, y + h - 1, color);
+    this->drawLine(x, y, x, y + h - 1, color);
+    this->drawLine(x + w - 1, y, x + w - 1, y + h - 1, color);
 }
 
 void GFX::fillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color)
 {
-	for (int16_t i = x; i < v + w; i++)
+	for (int16_t i = x; i < x + w; i++)
 	{
 		for (int16_t j = y; j < y + h; j++)
 		{

@@ -1,4 +1,4 @@
-Core/Src/encoder.o: ../Core/Src/encoder.cpp ../Core/Inc/encoder.h \
+Core/Src/encoder.o: ../Core/Src/encoder.cpp ../Core/Inc/encoder.hpp \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -28,9 +28,9 @@ Core/Src/encoder.o: ../Core/Src/encoder.cpp ../Core/Inc/encoder.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Core/Inc/encoder.h ../Core/Inc/timer.h ../Core/Inc/pwm.h \
- ../Core/Inc/app_main.hpp
-../Core/Inc/encoder.h:
+ ../Core/Inc/pwm.hpp ../Core/Inc/timer.hpp ../Core/Inc/OLED_Driver.hpp \
+ ../Core/Inc/i2c.hpp ../Core/Inc/GFX.hpp
+../Core/Inc/encoder.hpp:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -61,7 +61,8 @@ Core/Src/encoder.o: ../Core/Src/encoder.cpp ../Core/Inc/encoder.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
-../Core/Inc/encoder.h:
-../Core/Inc/timer.h:
-../Core/Inc/pwm.h:
-../Core/Inc/app_main.hpp:
+../Core/Inc/pwm.hpp:
+../Core/Inc/timer.hpp:
+../Core/Inc/OLED_Driver.hpp:
+../Core/Inc/i2c.hpp:
+../Core/Inc/GFX.hpp:

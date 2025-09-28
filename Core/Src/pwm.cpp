@@ -1,4 +1,4 @@
-#include "pwm.h"
+#include <pwm.hpp>
 
 HAL_StatusTypeDef PWM_Init(TIM_HandleTypeDef* pwmHandle)
 {

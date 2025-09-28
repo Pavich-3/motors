@@ -1,5 +1,5 @@
 "./Core/Src/GFX.o"
-"./Core/Src/app_main.o"
+"./Core/Src/OLED_Driver.o"
 "./Core/Src/encoder.o"
 "./Core/Src/i2c.o"
 "./Core/Src/main.o"

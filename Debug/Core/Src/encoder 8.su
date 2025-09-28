@@ -1,0 +1,1 @@
+../Core/Src/encoder.cpp:3:19:HAL_StatusTypeDef Encoder_Init(TIM_HandleTypeDef*)	64	static

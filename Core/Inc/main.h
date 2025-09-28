@@ -2,10 +2,10 @@
 #define __MAIN_H
 
 #include "stm32f4xx_hal.h"
-#include "encoder.h"
-#include "timer.h"
-#include "pwm.h"
-#include "app_main.hpp"
+#include <encoder.hpp>
+#include <pwm.hpp>
+#include <timer.hpp>
+#include "OLED_Driver.hpp"
 
 //#define ENCODER_MAX 720
 #define ENCODER_MAX 180

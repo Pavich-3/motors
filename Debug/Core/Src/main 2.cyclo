@@ -1,0 +1,4 @@
+../Core/Src/main.cpp:13:6:void HAL_DMA_CpltCallback(__DMA_HandleTypeDef*)	3
+../Core/Src/main.cpp:27:5:int main()	6
+../Core/Src/main.cpp:54:6:void SystemClock_Config()	3
+../Core/Src/main.cpp:84:6:void Error_Handler()	1

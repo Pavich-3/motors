@@ -1,1 +1,2 @@
-../Core/Src/timer.cpp:3:19:HAL_StatusTypeDef Timer_Init(TIM_HandleTypeDef*)	16	static
+../Core/Src/timer.cpp:3:6:void Error_Handler()	4	static,ignoring_inline_asm
+../Core/Src/timer.cpp:11:19:HAL_StatusTypeDef Timer_Init(TIM_HandleTypeDef*)	16	static

@@ -1,4 +1,12 @@
-#include "timer.h"
+#include <timer.hpp>
+
+void Error_Handler(void)
+{
+  __disable_irq();
+  while (1)
+  {
+  }
+}
 
 HAL_StatusTypeDef Timer_Init(TIM_HandleTypeDef* timerHandle)
 {

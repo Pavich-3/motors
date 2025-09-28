@@ -84,8 +84,8 @@ all: main-build
 main-build: motors.elf secondary-outputs
 
 # Tool invocations
-motors.elf motors.map: $(OBJS) $(USER_OBJS) C:\Users\Pavich\Documents\STM32\motors\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "motors.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Pavich\Documents\STM32\motors\STM32F411CEUX_FLASH.ld" -Wl,-Map="motors.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+motors.elf motors.map: $(OBJS) $(USER_OBJS) /Users/p.baranchuk/Documents/stm32/motors/STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "motors.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/p.baranchuk/Documents/stm32/motors/STM32F411CEUX_FLASH.ld" -Wl,-Map="motors.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

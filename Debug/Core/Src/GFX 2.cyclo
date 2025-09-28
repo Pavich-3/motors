@@ -1,0 +1,4 @@
+../Core/Src/GFX.cpp:4:1:GFX::GFX(int16_t, int16_t)	1
+../Core/Src/GFX.cpp:6:6:void GFX::drawLine(int16_t, int16_t, int16_t, int16_t, uint16_t)	7
+../Core/Src/GFX.cpp:48:6:void GFX::drawRect(int16_t, int16_t, int16_t, int16_t, uint16_t)	1
+../Core/Src/GFX.cpp:53:6:void GFX::fillRect(int16_t, int16_t, int16_t, int16_t, uint16_t)	3

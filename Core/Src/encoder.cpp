@@ -1,4 +1,4 @@
-#include "encoder.h"
+#include <encoder.hpp>
 
 HAL_StatusTypeDef Encoder_Init(TIM_HandleTypeDef *timHandle)
 {

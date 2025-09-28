@@ -1,7 +1,7 @@
 #pragma once
 
 #include "stm32f4xx_hal.h"
-#include "i2c.h"
+#include "i2c.hpp"
 #include "GFX.hpp"
 #include <string.h>
 
@@ -17,11 +17,13 @@ public:
 	void begin(void);
 	void display(void);
 	void clearDisplay(void);
+	void drawServo(uint16_t angle_deg);
 	void drawPixel(int16_t x, int16_t y, uint16_t color) override;
+
 private:
 	void sendCommand(uint8_t cmd);
 	void sendData(uint8_t* data, uint16_t size);
 
 	I2C_Bus bus;
-	uint8_t framebuffer;
+	uint8_t framebuffer[OLED_WIDTH * OLED_HEIGHT / 8];
 };
