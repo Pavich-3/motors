@@ -30,11 +30,10 @@ int main(void)
   if (HAL_TIM_Encoder_Start(&encoderHandle, TIM_CHANNEL_ALL) != HAL_OK) Error_Handler();
   if (HAL_TIM_PWM_Start(&pwmHandle, TIM_CHANNEL_1) != HAL_OK) Error_Handler();
 
+
   if (HAL_DMA_RegisterCallback(&hdma_timer, HAL_DMA_XFER_CPLT_CB_ID, HAL_DMA_CpltCallback) != HAL_OK) Error_Handler();
   __HAL_TIM_ENABLE_DMA(&timerHandle, TIM_DMA_UPDATE);
   if (HAL_DMA_Start_IT(&hdma_timer, (uint32_t)&encoderHandle.Instance->CNT, (uint32_t)&buffer, 1) != HAL_OK) Error_Handler();
-
-
   if (HAL_TIM_Base_Start(&timerHandle) != HAL_OK) Error_Handler();
 
   __HAL_TIM_SET_COMPARE(&pwmHandle, TIM_CHANNEL_1, (uint16_t)((SERVO_MIN_PULSE + SERVO_MAX_PULSE) / 2.0f));

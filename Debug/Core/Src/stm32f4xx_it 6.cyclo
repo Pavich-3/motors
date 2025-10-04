@@ -1,0 +1,14 @@
+../Core/Src/stm32f4xx_it.cpp:6:6:void DMA1_Stream2_IRQHandler()	1
+../Core/Src/stm32f4xx_it.cpp:11:6:void NMI_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:19:6:void HardFault_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:27:6:void MemManage_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:35:6:void BusFault_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:43:6:void UsageFault_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:51:6:void SVC_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:56:6:void DebugMon_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:61:6:void PendSV_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:66:6:void SysTick_Handler()	1
+../Core/Src/stm32f4xx_it.cpp:71:6:void TIM2_IRQHandler()	1
+../Core/Src/stm32f4xx_it.cpp:76:6:void I2C1_EV_IRQHandler()	1
+../Core/Src/stm32f4xx_it.cpp:80:6:void I2C1_ER_IRQHandler()	1
+../Core/Src/stm32f4xx_it.cpp:85:6:void DMA2_Stream1_IRQHandler()	1

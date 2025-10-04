@@ -47,7 +47,6 @@ void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef* htim_encoder)
 
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim)
 {
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
   if (htim->Instance == TIMER)
   {
 	__HAL_RCC_TIM3_CLK_ENABLE();
@@ -71,3 +70,36 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim)
   }
 }
 
+void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
+{
+	if (i2cHandle->Instance == I2C1)
+		{
+			__HAL_RCC_I2C1_CLK_ENABLE();
+			__HAL_RCC_GPIOB_CLK_ENABLE();
+			__HAL_RCC_DMA1_CLK_ENABLE();
+
+			GPIO_InitTypeDef GPIO_InitStruct = {
+					.Pin = GPIO_PIN_6 | GPIO_PIN_7,
+					.Mode = GPIO_MODE_AF_OD,
+					.Pull = GPIO_PULLUP,
+					.Speed = GPIO_SPEED_FREQ_VERY_HIGH,
+					.Alternate = GPIO_AF4_I2C1
+			};
+			HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+			hdma_i2c.Instance = DMA1_Stream1;
+			hdma_i2c.Init.Channel = DMA_CHANNEL_0;
+			hdma_i2c.Init.Direction = DMA_MEMORY_TO_PERIPH;
+			hdma_i2c.Init.PeriphInc = DMA_PINC_DISABLE;
+			hdma_i2c.Init.MemInc = DMA_MINC_ENABLE;
+			hdma_i2c.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+			hdma_i2c.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+			hdma_i2c.Init.Mode = DMA_CIRCULAR;
+			hdma_i2c.Init.Priority = DMA_PRIORITY_LOW;
+			hdma_i2c.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+			hdma_i2c.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_1QUARTERFULL;
+			if (HAL_DMA_Init(&hdma_i2c) != HAL_OK) Error_Handler();
+
+			__HAL_LINKDMA(i2cHandle, hdmatx, hdma_i2c);
+		}
+}

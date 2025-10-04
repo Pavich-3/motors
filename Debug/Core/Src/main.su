@@ -1,12 +1,12 @@
 ../Core/Src/main.cpp:17:5:int main()	16	static
-../Core/Src/main.cpp:49:6:void SystemClock_Config()	88	static
-../Core/Src/main.cpp:79:6:void HAL_DMA_CpltCallback(__DMA_HandleTypeDef*)	24	static
-../Core/Src/main.cpp:96:6:void Error_Handler()	4	static,ignoring_inline_asm
-../Core/Src/main.cpp:102:1:void __static_initialization_and_destruction_0()	8	static
+../Core/Src/main.cpp:48:6:void SystemClock_Config()	88	static
+../Core/Src/main.cpp:78:6:void HAL_DMA_CpltCallback(__DMA_HandleTypeDef*)	24	static
+../Core/Src/main.cpp:95:6:void Error_Handler()	4	static,ignoring_inline_asm
+../Core/Src/main.cpp:101:1:void __static_initialization_and_destruction_0()	8	static
 ../Core/Inc/GFX.hpp:10:10:GFX::~GFX()	16	static
 ../Core/Inc/GFX.hpp:10:10:virtual GFX::~GFX()	16	static
 ../Core/Inc/OLED_Driver.hpp:13:7:OLED_Driver::~OLED_Driver()	16	static
 ../Core/Inc/OLED_Driver.hpp:13:7:virtual OLED_Driver::~OLED_Driver()	16	static
-../Core/Src/main.cpp:102:1:void __static_initialization_and_destruction_1()	8	static
-../Core/Src/main.cpp:102:1:cpp)	8	static
-../Core/Src/main.cpp:102:1:cpp)	8	static
+../Core/Src/main.cpp:101:1:void __static_initialization_and_destruction_1()	8	static
+../Core/Src/main.cpp:101:1:cpp)	8	static
+../Core/Src/main.cpp:101:1:cpp)	8	static
