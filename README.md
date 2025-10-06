@@ -10,7 +10,7 @@ The core of this project is a highly efficient, **fully non-blocking I2C driver*
 
 ## Demo
 
-![Project Demo GIF]([https://your_link_to_the.gif](https://github.com/Pavich-3/motors/blob/main/IMG_3384-ezgif.com-resize.gif))
+![Project Demo GIF]([https://github.com/Pavich-3/motors/blob/main/IMG_3384-ezgif.com-resize.gif])
 
 ***
 
