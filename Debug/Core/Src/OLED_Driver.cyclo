@@ -6,7 +6,7 @@
 ../Core/Src/OLED_Driver.cpp:65:6:void OLED_Driver::clearDisplay()	1
 ../Core/Src/OLED_Driver.cpp:70:6:virtual void OLED_Driver::drawPixel(int16_t, int16_t, uint16_t)	8
 ../Core/Src/OLED_Driver.cpp:87:6:void OLED_Driver::drawServo(uint16_t)	2
-../Core/Src/OLED_Driver.cpp:110:6:void OLED_Driver::sendCommand(uint8_t)	1
-../Core/Src/OLED_Driver.cpp:116:6:void OLED_Driver::sendData(uint8_t*, uint16_t)	1
+../Core/Src/OLED_Driver.cpp:110:6:void OLED_Driver::sendCommand(uint8_t)	2
+../Core/Src/OLED_Driver.cpp:121:6:void OLED_Driver::sendData(uint8_t*, uint16_t)	2
 ../Core/Inc/OLED_Driver.hpp:13:7:OLED_Driver::~OLED_Driver()	1
 ../Core/Inc/OLED_Driver.hpp:13:7:virtual OLED_Driver::~OLED_Driver()	1

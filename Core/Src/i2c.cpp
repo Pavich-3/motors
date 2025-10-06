@@ -20,14 +20,16 @@ HAL_StatusTypeDef I2C_Bus::i2cInit(void)
 	return HAL_OK;
 }
 
-HAL_StatusTypeDef I2C_Bus::writeDMA(uint8_t device_addr, uint8_t* data, uint16_t size)
+HAL_StatusTypeDef I2C_Bus::write(uint8_t device_addr, uint8_t* data, uint16_t size)
 {
+    while (isBusy());
+
 	return HAL_I2C_Master_Transmit_DMA(i2cHandle, (device_addr << 1), data, size);
 }
 
-HAL_StatusTypeDef I2C_Bus::writeBlocking(uint8_t device_addr, uint8_t* data, uint16_t size, uint32_t timeout)
+bool I2C_Bus::isBusy()
 {
-    return HAL_I2C_Master_Transmit(i2cHandle, (device_addr << 1), data, size, timeout);
+    return HAL_I2C_GetState(i2cHandle) != HAL_I2C_STATE_READY;
 }
 
 void I2C_Bus::Error_Handler(void)

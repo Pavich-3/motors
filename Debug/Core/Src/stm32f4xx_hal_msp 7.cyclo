@@ -1,0 +1,5 @@
+../Core/Src/stm32f4xx_hal_msp.cpp:6:6:void HAL_MspInit()	1
+../Core/Src/stm32f4xx_hal_msp.cpp:12:6:void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef*)	2
+../Core/Src/stm32f4xx_hal_msp.cpp:30:6:void HAL_TIM_Encoder_MspInit(TIM_HandleTypeDef*)	2
+../Core/Src/stm32f4xx_hal_msp.cpp:48:6:void HAL_TIM_Base_MspInit(TIM_HandleTypeDef*)	3
+../Core/Src/stm32f4xx_hal_msp.cpp:73:6:void HAL_I2C_MspInit(I2C_HandleTypeDef*)	3

@@ -1,0 +1,5 @@
+../Core/Src/i2c.cpp:5:1:I2C_Bus::I2C_Bus(I2C_HandleTypeDef*)	16	static
+../Core/Src/i2c.cpp:7:19:HAL_StatusTypeDef I2C_Bus::i2cInit()	16	static
+../Core/Src/i2c.cpp:34:19:HAL_StatusTypeDef I2C_Bus::write(uint8_t, uint8_t*, uint16_t)	24	static
+../Core/Src/i2c.cpp:50:6:bool I2C_Bus::isBusy()	16	static
+../Core/Src/i2c.cpp:55:6:void I2C_Bus::Error_Handler()	16	static,ignoring_inline_asm

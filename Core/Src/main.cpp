@@ -3,6 +3,7 @@
 extern DMA_HandleTypeDef hdma_timer;
 volatile uint32_t buffer = -1;
 volatile uint32_t last_buffer = -1;
+volatile bool screen_update_needed = false;
 
 
 TIM_HandleTypeDef encoderHandle = {0};
@@ -41,7 +42,11 @@ int main(void)
 
   while (1)
   {
-
+      if (screen_update_needed)
+      {
+          screen_update_needed = false;
+          oled.drawServo(buffer);
+      }
   }
 }
 
@@ -88,7 +93,7 @@ void HAL_DMA_CpltCallback(struct __DMA_HandleTypeDef * hdma)
         uint16_t new_pulse = SERVO_MIN_PULSE + (((uint32_t)buffer * (uint32_t)(SERVO_MAX_PULSE - SERVO_MIN_PULSE)) / (uint32_t)ENCODER_MAX);
         __HAL_TIM_SET_COMPARE(&pwmHandle, TIM_CHANNEL_1, new_pulse);
 
-        oled.drawServo(buffer);
+        screen_update_needed = true;
     }
 }
 

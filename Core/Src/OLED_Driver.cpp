@@ -109,28 +109,22 @@ void OLED_Driver::drawServo(uint16_t angle_deg) {
 
 void OLED_Driver::sendCommand(uint8_t cmd)
 {
-	uint8_t buffer[2] = {0x00, cmd};
-	this->bus.writeBlocking(OLED_I2C_ADDR, buffer, 2, 100);
+    while (this->bus.isBusy());
+
+    static uint8_t command_buffer[2];
+    command_buffer[0] = 0x00;
+    command_buffer[1] = cmd;
+
+    this->bus.write(OLED_I2C_ADDR, command_buffer, 2);
 }
 
 void OLED_Driver::sendData(uint8_t* data, uint16_t size)
 {
     static uint8_t transmit_buffer[1025];
+    if ((size + 1) > sizeof(transmit_buffer))	return;
+
     transmit_buffer[0] = 0x40;
     memcpy(transmit_buffer + 1, data, size);
 
-    this->bus.writeBlocking(OLED_I2C_ADDR, transmit_buffer, size + 1, 1000);
+    this->bus.write(OLED_I2C_ADDR, transmit_buffer, size + 1);
 }
-
-//void OLED_Driver::sendData(uint8_t* data, uint16_t size)
-//{
-//    static uint8_t transmit_buffer[1025];
-//    transmit_buffer[0] = 0x40;
-//    memcpy(transmit_buffer + 1, data, size);
-//
-//    while (HAL_I2C_GetState(bus.i2cHandle) != HAL_I2C_STATE_READY);
-//
-//    this->bus.writeDMA(OLED_I2C_ADDR, transmit_buffer, size + 1);
-//
-//    while (HAL_I2C_GetState(bus.i2cHandle) != HAL_I2C_STATE_READY);
-//}

@@ -94,12 +94,19 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
 			hdma_i2c.Init.MemInc = DMA_MINC_ENABLE;
 			hdma_i2c.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
 			hdma_i2c.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
-			hdma_i2c.Init.Mode = DMA_CIRCULAR;
+			hdma_i2c.Init.Mode = DMA_NORMAL;
 			hdma_i2c.Init.Priority = DMA_PRIORITY_LOW;
 			hdma_i2c.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
 			hdma_i2c.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_1QUARTERFULL;
 			if (HAL_DMA_Init(&hdma_i2c) != HAL_OK) Error_Handler();
 
 			__HAL_LINKDMA(i2cHandle, hdmatx, hdma_i2c);
+
+			HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 0, 0);
+			HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
+			HAL_NVIC_SetPriority(I2C1_EV_IRQn, 0, 0);
+			HAL_NVIC_EnableIRQ(I2C1_EV_IRQn);
+			HAL_NVIC_SetPriority(I2C1_ER_IRQn, 0, 0);
+			HAL_NVIC_EnableIRQ(I2C1_ER_IRQn);
 		}
 }
